@@ -1,0 +1,72 @@
+
+<ion-header>
+
+
+</ion-header>
+
+
+<ion-content class = "background" >
+	<ion-card class = "card" >
+		<ion-card-header>
+			Sign Up
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list no-lines>
+						<ion-datetime [hidden]="hide" displayFormat="YYYY/MM/DD" [(ngModel)]="newuser.datejoined"></ion-datetime>
+			<div class ="spacer" style="height: 10px;"></div>
+			<ion-item>
+				<ion-input type="email" placeholder="Email" [(ngModel)] = "newuser.email"></ion-input>
+			</ion-item>
+			<div class ="spacer" style="height: 10px;"></div>
+			<ion-item>
+				<ion-input type="text" placeholder="Username" [(ngModel)] = "newuser.displayName"></ion-input>
+			</ion-item>
+			<div class ="spacer" style="height: 10px;"></div>
+			<ion-item>
+				<ion-input type="password" placeholder="Password" [(ngModel)] = "newuser.password"></ion-input>
+			</ion-item>
+			<div class ="spacer" style="height: 10px;"></div>
+			<ion-item>
+				<ion-input type="password" placeholder="Password again" [(ngModel)] = "newuser.password2"></ion-input>
+			</ion-item>
+			<div class ="spacer" style="height: 10px;"></div>
+			<ion-item>	
+			 <ion-label style="color: #ff0;">Age</ion-label>
+	 <ion-input type="number" placeholder="" [(ngModel)] = "newuser.age"></ion-input>
+			
+			</ion-item>
+
+			<h4 style = "color: #f00;">You must be 21 years of age!</h4>
+			</ion-list>
+			
+				
+				<ion-label>Gender:  </ion-label>
+				
+					
+				<div radio-group [(ngModel)]= "newuser.gender">
+				<ion-row>
+				<ion-col>
+				<ion-label>male</ion-label>
+				   <ion-icon name="male"></ion-icon>
+				   <ion-radio  value="Male">male</ion-radio>
+				</ion-col>
+				<ion-col>
+				<ion-label>female</ion-label>
+				   <ion-icon name="female"></ion-icon>
+				   <ion-radio  value="Female">female</ion-radio>
+				</ion-col>
+				<ion-col>
+				<ion-label>Transgender</ion-label>
+				   <ion-icon name="transgender"></ion-icon>
+				   <ion-radio  value="Transgender">Transgender</ion-radio>
+				</ion-col>
+				</ion-row>
+				</div>
+				
+		
+				<button ion-button block outline round color="light" (click)="signup()">Register</button>
+		
+		</ion-card-content>
+	</ion-card>
+
+</ion-content>

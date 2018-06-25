@@ -1,0 +1,30 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>dates</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-list>
+		<ion-item-sliding *ngFor="let item of myrequests">
+			<ion-item>
+				<ion-avatar item-left>
+					<img src="{{item.photoURL}}">
+				</ion-avatar>
+				<h4>{{item.displayName}}</h4>
+			</ion-item>
+			<ion-item-options>
+				<button ion-button color="secondary" (click) = "accept(item)">
+					<ion-icon name="checkmark"></ion-icon>
+				</button>
+				<button ion-button color="danger" (click) = "ignore(item)">
+					<ion-icon name="trash"></ion-icon>
+				</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+</ion-content>

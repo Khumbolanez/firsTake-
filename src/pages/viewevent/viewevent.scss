@@ -1,0 +1,23 @@
+page-viewevent {
+	#bottom-toolbar {
+        position: absolute;
+        bottom: 0;
+		border-radius: 5%;
+    }
+	
+	.comment{
+	
+		height: 20%;
+		width: 100%;
+		
+	}
+	
+	.foots{
+		
+			position: fixed;
+			bottom: 0%;
+			background-color: rgba(255,255,255,0.1);
+			color: rgba(255,255,255,1);
+		}
+
+}

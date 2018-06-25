@@ -1,0 +1,152 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Build bio</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="background" padding>
+	<ion-card class="card">
+		<ion-list>
+		<ion-list-header>
+			Bio
+		</ion-list-header>
+		<ion-item>
+				<ion-input type="text" placeholder="One liner:" [(ngModel)] = "bio.oneliner"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-input type="text" placeholder="Name:" [(ngModel)] = "bio.name"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-input type="text" placeholder="Surname:" [(ngModel)] = "bio.surname"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-input type="text" placeholder="Occupation:" [(ngModel)] = "bio.occupation"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-input type="text" placeholder="Home town:" [(ngModel)] = "bio.hometown"></ion-input>
+			</ion-item>
+			<ion-item>
+			<ion-label>Star Sign</ion-label>
+				<ion-select [(ngModel)] = "bio.starsign">
+					<ion-option value ="Aries">Aries</ion-option>
+					<ion-option value ="Taurus">Taurus</ion-option>
+					<ion-option value ="Gemini">Gemini</ion-option>
+					<ion-option value ="Cancer">Cancer</ion-option>
+					<ion-option value ="Leo">Leo</ion-option>
+					<ion-option value ="Virgo">Virgo</ion-option>
+					<ion-option value ="Libra">Libra</ion-option>
+					<ion-option value ="Scorpio">Scorpio</ion-option>
+					<ion-option value ="Sagittarius">Sagittarius</ion-option>
+					<ion-option value ="Capricorn">Capricorn</ion-option>
+					<ion-option value ="Aquarius">Aquarius</ion-option>
+					<ion-option value ="Pisces">Pisces</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-input type="text" placeholder="Favourite food:" [(ngModel)] = "bio.food"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-input type="text" placeholder="Favourite music:" [(ngModel)] = "bio.music"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Introvert/Extrovert</ion-label>
+				<ion-select [(ngModel)] = "bio.personality">
+					<ion-option value ="Introvert">Introvert</ion-option>
+					<ion-option value ="Extrovert">Extrovert</ion-option>
+				
+				
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Height</ion-label>
+				<ion-select [(ngModel)] = "bio.height">
+					<ion-option value ="Very tall">Very Tall</ion-option>
+					<ion-option value ="Tall">Tall</ion-option>
+					<ion-option value ="Slightly tall">Slightly Tall</ion-option>
+					<ion-option value ="Average">Average</ion-option>
+					<ion-option value ="Slightly short">Slightly Short</ion-option>
+					<ion-option value ="Short">Short</ion-option>
+					<ion-option value ="Very short">Very Short</ion-option>
+				
+				</ion-select>
+				</ion-item>
+				<ion-item>
+				<ion-input type="text" placeholder="Dream destination:" [(ngModel)] = "bio.destination"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Indoor/Outdoor</ion-label>
+				<ion-select [(ngModel)] = "bio.env">
+					<ion-option value ="Indoors">Indoors</ion-option>
+					<ion-option value ="Outdoors">Outdoors</ion-option>
+					
+				
+				</ion-select>
+				</ion-item>
+				<ion-item>
+				<ion-label>Favourite activity:</ion-label>
+				<ion-select [(ngModel)] = "bio.activity">
+					<ion-option value ="Internet">Internet</ion-option>
+					<ion-option value ="Television">Tv</ion-option>
+					<ion-option value ="Make-up">Make-up </ion-option>
+					<ion-option value ="Partying">Partying</ion-option>
+					<ion-option value ="Eating">Eating</ion-option>
+					<ion-option value ="Shoplifting">Shoplifting</ion-option>
+					<ion-option value ="Whatsapp">Whatsapp</ion-option>
+					<ion-option value ="Instagram">Instagram</ion-option>
+					<ion-option value ="Twitter">Twitter</ion-option>
+				</ion-select>
+				</ion-item>
+				<ion-item>
+				<ion-label>Manner: </ion-label>
+				<ion-select [(ngModel)] = "bio.badwhat">
+					<ion-option value ="Bad boy">Bad Boy</ion-option>
+					<ion-option value ="Nice guy ">Nice Guy</ion-option>
+					<ion-option value ="Naughty girl">Naughty girl</ion-option>
+					<ion-option value ="Good girl">Good Girl</ion-option>
+				
+				</ion-select>
+				</ion-item>
+				<ion-item>
+				<ion-label>Personality/Physical Attraction preferences </ion-label>
+				<ion-select [(ngModel)] = "bio.prefer">
+					<ion-option value ="Personality">Personality</ion-option>
+					<ion-option value ="Physical attraction">Physical Attraction</ion-option>
+					
+				
+				</ion-select>
+				</ion-item>
+				<ion-item>
+				<ion-label>Braai/Night club </ion-label>
+				<ion-select [(ngModel)] = "bio.outing">
+					<ion-option value ="Braai">Braai</ion-option>
+					<ion-option value ="Clubbing">Night club</ion-option>
+				
+				</ion-select>
+				</ion-item>
+				<ion-item>
+				<ion-label>Formal/Casual</ion-label>
+				<ion-select [(ngModel)] = "bio.type">
+					<ion-option value ="Formal">Formal</ion-option>
+					<ion-option value ="Casual">Casual</ion-option>
+				
+				</ion-select>
+				</ion-item>
+				<ion-item>
+				<ion-label>Love/Lust</ion-label>
+				<ion-select [(ngModel)] = "bio.stype">
+					<ion-option value ="Love">Love</ion-option>
+					<ion-option value ="Lust">Lust</ion-option>
+				
+				</ion-select>
+				</ion-item>
+			
+			<ion-item>
+				<button ion-button block outline round color="light" (click)="addbio()">Add Bio</button>
+			</ion-item>
+		</ion-list>
+	</ion-card>
+</ion-content>

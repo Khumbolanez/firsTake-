@@ -1,0 +1,68 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+		 <button ion-button color="hcolor" menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My dates</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-list>
+	  <ion-list-header style= "color: #fff; background-color: #800;">
+		Date requests
+	  </ion-list-header>
+		<ion-item-sliding *ngFor="let item of myrequests">
+			<ion-item  (click) = "viewprofile(item)" style= "color: #800; background-color: #222;">
+				<ion-avatar item-left>
+					<img src="{{item.photoURL}}">
+				</ion-avatar>
+				<h2 style= "color:  #f00;">{{item.displayName}}</h2>
+				<ion-row>
+				<ion-col>
+				<h5 style= "color: #fff;">View profile</h5>
+				</ion-col>
+				<ion-col>
+					<h5 style= "color: #fff;">Swipe left to respond</h5>
+				</ion-col>
+				</ion-row>
+			</ion-item>
+			<ion-item-options>
+				<button ion-button color="secondary" (click) = "accept(item)">Accept
+					<ion-icon name="checkmark"></ion-icon>
+				</button>
+				<button ion-button color="danger" (click) = "ignore(item)">Decline
+					<ion-icon name="trash"></ion-icon>
+				</button>
+			</ion-item-options>
+		</ion-item-sliding>
+		<ion-list-header style= "color: #fff; background-color: #800;" >
+			Pending requests
+		</ion-list-header>
+		<ion-item style= "background: #222;" *ngFor="let item of myrequests2" (click) ="viewprofile(item)">
+		<ion-avatar item-left>
+			<img src="{{item.photoURL}}">
+		</ion-avatar>
+		<h3 style= "color: #f00; ">{{item.displayName}}</h3>
+		<h5 style= "color: #fff;">View profile</h5>
+		</ion-item>
+		
+	
+	<ion-list-header style= "color: #fff; background-color: #800;" >
+			Confirmed Dates
+		</ion-list-header>
+		<ion-item style= "background: #222;" *ngFor="let item of mydates" >
+		<ion-avatar item-left (click) ="viewprofile(item)">
+			<img src="{{item.photoURL}}">
+		</ion-avatar>
+		<h3 style= "color: #f00; " (click) ="chat(item)">{{item.displayName}}</h3>
+		<h5 style= "color: #fff;" (click) ="chat(item)">Tap to chat</h5>
+		<h5 style= "color: #fff;" (click) ="chat(item)">Tap to picture to view profile</h5>
+		</ion-item>
+		
+	</ion-list>
+</ion-content>

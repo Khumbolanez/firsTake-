@@ -1,0 +1,141 @@
+
+<ion-header>
+
+  <ion-navbar >
+        <h1 style= "color: #800; text-align: center;">View Event</h1>
+		
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	
+	<ion-list>
+		
+		<ion-list>
+			<ion-card>
+				 <ion-item>
+				 <ion-row>
+					<ion-col>
+					<h2 style = "color: #488aff">{{eventname}}</h2>
+					
+					</ion-col>
+					<ion-col>
+					<p>{{eventdate}}</p>
+					</ion-col>
+					<ion-col>
+					<h2 style = "color: #488aff">No of Attendees</h2>
+
+					<p color = "hcolor">{{attendees}}</p>
+
+					</ion-col>
+				</ion-row>
+				</ion-item>
+				<ion-toolbar>
+				
+				
+				<ion-segment>
+					<ion-segment-button  (click)="getattendance()">
+					<ion-icon color ="danger" name="people"></ion-icon>
+					  
+					</ion-segment-button >
+					<ion-segment-button (click)="getnewsfeed()">
+					<ion-icon color ="danger" name="paper"></ion-icon>
+					  
+					</ion-segment-button>
+					<ion-segment-button (click)="getcommentsflag()">
+					<ion-icon color ="danger" name="chatbubbles"></ion-icon>
+					  
+					</ion-segment-button>
+				  </ion-segment>
+				</ion-toolbar>
+				<div [hidden] = "!commentses"  style="background-color: #000; color: #fff">
+					<div id="commentmessages">
+						<ion-item class="comment" *ngFor="let comment of eventcomments">
+						<ion-avatar item-left>
+								<img src="{{comment.photoURL}}">
+						</ion-avatar>
+							<h4 style = "color: #f00">{{comment.sentby}}</h4>
+							<p style = "color: #fff; display: inline-block;">{{comment.message}}</p>
+							<p style ="font-size: 10px; float: right">{{comment.timesent}}</p>
+						</ion-item>
+					</div>
+				
+				</div>
+				<div [hidden] = "!newsfeed" height="100" >
+					<ion-card *ngFor="let item of filteredfeeds">
+					<ion-card-header style = "color: #fff">
+					{{item.headline}}
+					</ion-card-header>
+					<ion-card-content>
+					<img src ="{{item.avatar}}">
+					<p style = "color: #fff">{{item.news}}</p>
+					</ion-card-content>
+					</ion-card>
+				</div>
+				<ion-item [hidden] = "!attendance">
+					<ion-toolbar color = "hcolor">
+						<ion-searchbar   [(ngModel)] ="searchstring" (input) = "searchuser($event)" placeholder="Search"></ion-searchbar>
+					</ion-toolbar>
+				</ion-item>
+				<ion-item [hidden] = "!attendance">
+					<ion-row>
+				<ion-col>
+				<button (click) = "getall()" ion-button icon-left clear small>
+					<ion-icon color ="light" name="eye"></ion-icon>
+				<div style = "color: #fff;" >all</div>
+				</button>
+				</ion-col>
+				<ion-col>
+				<button  (click) = "getfemales()" ion-button icon-left clear small>
+				<ion-icon color ="pink" name="female"></ion-icon>
+				
+				</button>
+				</ion-col>
+				<ion-col>
+				<button  (click) = "getmales()" ion-button icon-left clear small>
+				<ion-icon  name="male"></ion-icon>
+				</button>
+				</ion-col>
+				<ion-col>
+				<button  (click) = "getothers()" ion-button icon-left clear small>
+				<ion-icon color ="secondary" name="transgender"></ion-icon>
+				</button>
+				</ion-col>
+				</ion-row>
+				</ion-item>
+				
+					
+				
+					<ion-grid>
+						<ion-row >
+							<ion-col [hidden] = "!attendance" *ngFor = "let key of filteredusers" col-4>
+						<img src="{{key.photoURL}}" (click) = "viewprofile(key)"  height="100" width="65">
+						</ion-col>
+						</ion-row>
+						</ion-grid>
+			
+					
+				
+				
+				
+			
+			
+				
+		
+			</ion-card>
+		</ion-list>
+	</ion-list>
+	
+</ion-content>
+<ion-footer color = "hcolor" class="foots">
+<ion-toolbar [hidden] = "!commentses"  >
+				<ion-segment>
+					<ion-input style = "width: 80%;" type="test" placeholder="Comment..." [(ngModel)] = "comment"></ion-input>
+					<button   (click) = "sendcomment()" ion-button icon-left clear small item-right>
+					<ion-icon color ="secondary" name="send"></ion-icon>
+					</button>
+					</ion-segment>
+	</ion-toolbar>
+</ion-footer>

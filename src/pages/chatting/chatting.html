@@ -1,0 +1,53 @@
+
+<ion-header>
+
+  <ion-navbar >
+    <ion-title >{{date.displayName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding #content>
+	<div class="chatwindow" >
+	<ion-list no-lines class="elist">
+	<ion-item *ngFor = "let item of allmessages; let i = index" text-wrap>
+	<ion-avatar item-left *ngIf="item.sentby === date.uid">
+		<img src={{date.photoURL}}>
+	</ion-avatar>
+	
+	<div item-left class="thembubble" *ngIf = "item.sentby === date.uid">
+		<h3>{{item.message}}</h3>
+		<p left style ="font-size: 10px">{{item.timesent}}</p>
+
+	</div>
+	
+	<div item-right class="mybubble" *ngIf = "item.sentby != date.uid">
+		<h3>{{item.message}}</h3>
+				<p style ="font-size: 10px; float: right">{{item.timesent}}</p>
+
+	</div>
+	
+	
+	<ion-avatar item-right *ngIf="item.sentby != date.uid">
+		<img src={{photoURL}}>
+		</ion-avatar>
+	</ion-item >
+	</ion-list>
+	</div>
+	</ion-content>
+	<ion-footer color = "hcolor" class="foots">
+		
+		<ion-toolbar >
+			<ion-input [(ngModel)] = "newmessage" placeholder="Message...">
+			</ion-input>
+			<ion-buttons end>
+				<button color ="hcolor" ion-button (click) = "sendmessage()">
+				<ion-icon name="send">
+				</ion-icon>
+				</button>
+				
+			</ion-buttons>
+		</ion-toolbar>
+	</ion-footer>
+

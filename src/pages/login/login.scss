@@ -1,0 +1,32 @@
+page-login {
+	
+	.background {
+		background-image: url('../assets/imgs/loginpic.jpg');
+		background-size: 100% 100%;
+	}
+	
+	
+	ion-card.card {
+		top: 30%;
+		box-shadow: none;
+		background: rgba(0,0,0,0.5);
+		border-radius: 5px;
+	
+	}
+	a,p,
+	ion-card-header.card-header {
+		color: #f00!important;
+	}
+	.list > .item-block:first-child {
+		border: medium none;
+	}
+	
+	.item{
+		margin-bottom: 10px;
+		background: rgba(0,0,0,0.5);
+		border: medium none;
+		.text-input {
+			color: #f00;
+		}
+	}
+}

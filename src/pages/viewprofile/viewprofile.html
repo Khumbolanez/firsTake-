@@ -1,0 +1,59 @@
+
+
+
+<ion-header>
+  <ion-navbar >
+        <h1 style= "color: #fff; text-align: center;"> My profile</h1>
+  </ion-navbar>
+  
+</ion-header>
+
+<ion-content overflow-scroll="false">
+
+	
+
+	
+	<div class ="profile-image" [ngStyle] ="{'background-image': 'url(' + bckavatar + ')'}">
+     		<img src="{{avatar}}" (click) = "editimage()" >
+		
+			<h4 style ="color: #f00;">{{displayName}}</h4>
+			</div>
+
+	
+	<div class="profile-detail2">
+		<h3 style ="color: #fff;">{{oneliner.answer}} </h3>
+		
+		
+		</div>
+		<div class="profile-detail3">
+		<ion-toolbar>
+				<ion-segment>
+					
+					<ion-segment-button (click)="opengallery()">
+					<ion-icon color ="white" name="images"> Gallery</ion-icon>
+					  
+					</ion-segment-button>
+					<ion-segment-button (click)="sendreq(user)">
+					<ion-icon color="hcolor" name="rose"></ion-icon> {{buttondisplay}} 
+					  
+					</ion-segment-button>
+				  </ion-segment>
+				  </ion-toolbar>
+		</div>
+	
+	<ion-list  class="el-list" [virtualScroll] ="bio" approxitemHeight="40px">
+	
+	
+  <ion-item *virtualItem ="let bios">
+  <ion-avatar item-left>
+		<ion-img src="{{bios.pic}}"></ion-img>
+	</ion-avatar>
+	
+    <h2>{{bios.question}}: </h2>
+	<h4>
+	{{bios.answer}}
+	</h4>
+  </ion-item>
+</ion-list>
+
+</ion-content>

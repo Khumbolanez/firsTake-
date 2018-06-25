@@ -1,0 +1,24 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>View gallery</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	
+<ion-slides  >
+	
+    <ion-slide *ngFor="let pic of pics"  >
+      
+       <ion-card>
+	  
+		<img src= "{{pic}}">
+		
+		</ion-card>
+     </ion-slide>
+	 </ion-slides>
+</ion-content>

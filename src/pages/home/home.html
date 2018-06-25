@@ -1,0 +1,54 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button color="hcolor" menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class = "background" overflow-scroll="false">
+	<ion-list>
+		
+		<ion-list>
+			<ion-card class ="card" *ngFor = "let key of filteredevents">
+				 <ion-item>
+					<h2 style = "color: #f00">{{key.eventname}}</h2>
+					<p style = "color: #fff">{{key.eventdate}}</p>
+				</ion-item>
+
+				<img src="{{key.eventavatar}}">
+
+				<ion-card-content>
+					<p style = "color: #fff">{{key.eventdesc}}</p>
+				</ion-card-content>
+
+				<ion-row>
+				<ion-col>
+				<button ion-button (click) = "viewevent(key)" icon-left clear small>
+					<ion-icon color ="hcolor" name="eye"></ion-icon>
+				<div>View event</div>
+				</button>
+				</ion-col>
+				<ion-col>
+				<button (click) = "joinevent(key.eventname)" ion-button icon-left clear small>
+				<ion-icon color ="hcolor" name="walk"></ion-icon>
+				<div>Join Event</div>
+				</button>
+				</ion-col>
+				</ion-row>
+				<ion-row>
+				<ion-col center text-center>
+				<ion-note style = "color: #f00">
+				<p style = "color: #fff">{{key.monthsleft}} months and {{key.daysleft}} days left</p>
+
+				</ion-note>
+				</ion-col>
+				</ion-row>
+		
+			</ion-card>
+		</ion-list>
+	</ion-list>
+</ion-content>

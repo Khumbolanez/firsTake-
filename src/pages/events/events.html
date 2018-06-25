@@ -1,0 +1,43 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>events</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class = "background" overflow-scroll="false">
+	<ion-card class ="card">
+		<ion-card-header>		
+			Create Event
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list no-lines>
+			<div class ="spacer" style="height: 10px;"></div>
+			<ion-item>
+				<ion-input type="text" placeholder="Event name" [(ngModel)] = "evente.eventname"></ion-input>
+			</ion-item>
+			<div class ="spacer" style="height: 10px;"></div>
+			<ion-item>
+				  <ion-label style="color: #ff0;">Date</ion-label>
+					<ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="evente.eventdate"></ion-datetime>
+			</ion-item>
+			<div class ="spacer" style="height: 10px;"></div>
+			<ion-item (click) = "chooseimage()">
+				<img height="50" width="50"  src="{{evente.avatar}}">
+			</ion-item>
+			<ion-item>
+				<ion-input type="text" placeholder="Event Description" [(ngModel)] = "evente.eventdescription"></ion-input>
+			</ion-item>
+						<div class ="spacer" style="height: 10px;"></div>
+
+			<ion-item>
+				<button ion-button block outline round color="hcolor" (click)="addevent()">Add Event</button>
+			</ion-item>
+			</ion-list>
+
+		</ion-card-content>
+	</ion-card>
+</ion-content>

@@ -1,0 +1,59 @@
+page-chatting {
+	.chatwindow{
+			width: 100%;
+			
+
+		}
+		
+		
+	.list > .item-block:first-child {
+		border: medium none;
+	}
+	
+	.elist{
+		background: rgba(100,100,100,1);
+		
+	}
+	
+	.item{
+		margin-bottom: 10px;
+		background: rgba(100,100,100,1);
+		.text-input {
+			color: #f00;
+		}
+	}
+		
+		.foots{
+		
+			position: fixed;
+			bottom: 0%;
+			background-color: rgba(255,255,255,0.1);
+			color: rgba(255,255,255,1);
+		}
+		
+		.thembubble{
+			background-color: rgba(0,0,0,1);
+			color: rgba(255,255,255,1);
+			border-radius: 5px;
+			box-shadow: 0 0 6px #fff;
+			display: inline-block;
+			padding: 10px 18px;
+			position: relative;
+			vertical-align: top;
+			left: -5%;
+			width: 80%;
+		}
+		
+		.mybubble{
+			background-color: rgba(0,0,0,1);
+			color: rgba(255,255,255,1);
+			border-radius: 5px;
+			box-shadow: 0 0 6px #f00;
+			display: inline-block;
+			padding: 10px 18px;
+			position: relative;
+			vertical-align: top;
+			right: -5%;
+			width: 80%;
+		}
+}

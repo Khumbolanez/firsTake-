@@ -1,0 +1,30 @@
+
+<ion-header>
+
+  <ion-navbar >
+        <h1 style= "color: #800; text-align: center;">Search</h1>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-toolbar color = "hcolor">
+		<ion-searchbar   [(ngModel)] ="searchstring" (input) = "searchuser($event)" placeholder="Search"></ion-searchbar>
+	</ion-toolbar>
+	<ion-list>
+		
+		<ion-list>
+			<ion-item-sliding  *ngFor = "let key of filteredusers">
+				<ion-item  (click) = "viewprofile(key)" style= "background-color: #222;">
+					<ion-avatar item-left>
+						<img src="{{key.photoURL}}">
+					</ion-avatar>
+					<h2 style= "color: #ff0;">{{key.displayName}}</h2>
+					<h5 style= "color: #fff;">View profile</h5>
+				</ion-item>
+				
+			</ion-item-sliding>
+		</ion-list>
+	</ion-list>
+</ion-content>
