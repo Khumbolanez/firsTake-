@@ -1,8 +1,8 @@
-//import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 import { IonicPage, NavController, NavParams, AlertController ,Events} from 'ionic-angular';
+import { FcmProvider } from '../../providers/fcm/fcm';
 
 
 @Injectable()
@@ -10,13 +10,15 @@ export class UserProvider {
 	firedata = firebase.database().ref('/users');
 	firebios = firebase.database().ref('/bios');
 	fireevents = firebase.database().ref('/events');
+	firenotify = firebase.database().ref('/notifications');
+
 	user: any;
 	eluser: any;
 	username;
 	photoURL;
 	signingup = true;
 	userdetails;
-  constructor(public afireauth: AngularFireAuth,public events: Events) {
+  constructor(public afireauth: AngularFireAuth,public fcm: FcmProvider,public events: Events) {
     console.log('Hello UserProvider Provider');
 
 	 
@@ -27,9 +29,7 @@ export class UserProvider {
 	  this.eluser= this.afireauth.auth.currentUser;
 	  this.username = this.eluser.displayName;
 	  this.photoURL = this.eluser.photoURL;
-	  console.log("userid menu: " + this.eluser);
-	  console.log("username menu: " + this.username);
-	  console.log("photo menu: " + this.photoURL);
+	  
 	  this.events.publish('userdetails')
 	  //
   }
@@ -50,9 +50,14 @@ export class UserProvider {
 			monthsleft: '',
 			daysleft: ''
 		}).then(() => {
-			resolve({ success: true}) ;
-		}).catch((err) => {
-			reject(err);
+			this.firenotify.child('notify').push({
+						devtoken: '',
+						message: evente.eventname,
+						sender: firebase.auth().currentUser.displayName,
+						type: 'event'
+					}).then(() => {
+						resolve({ success: true}) ;
+					})
 		})
 	  })
 	  return promise;
@@ -144,7 +149,8 @@ export class UserProvider {
 					  photoURL1: 'https://firebasestorage.googleapis.com/v0/b/complex-project-ca17a.appspot.com/o/placeholder.png?alt=media&token=fa1d5879-62f3-46da-b379-ef29063a0c5b',
 					  photoURL2: 'https://firebasestorage.googleapis.com/v0/b/complex-project-ca17a.appspot.com/o/placeholder.png?alt=media&token=fa1d5879-62f3-46da-b379-ef29063a0c5b',
 					gender: newuser.gender,
-					age: newuser.age
+					age: newuser.age,
+					devtoken: this.fcm.mytoken
 				}).then(() => {
 					resolve({ success: true}) ;
 			      }).catch((err) => {
@@ -157,6 +163,24 @@ export class UserProvider {
 			 })  
 		   })
 	  })
+	  return promise;
+  }
+  
+  updatetoken(){
+	 
+	  var promise = new Promise((resolve,reject) => {
+		  this.firedata.child(this.afireauth.auth.currentUser.uid).update({
+					uid: this.afireauth.auth.currentUser.uid,
+					displayName: this.afireauth.auth.currentUser.displayName,
+					photoURL: this.afireauth.auth.currentUser.photoURL,
+					devtoken: this.fcm.mytoken
+				}).then(() => {
+					resolve({ success: true}) ;
+			      }).catch((err) => {
+				    reject(err);
+			       })
+	  })
+	  
 	  return promise;
   }
   

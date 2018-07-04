@@ -6,6 +6,8 @@ import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
 import { UserProvider } from '../../providers/user/user';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { tap } from 'rxjs/operators';
+import { FcmProvider } from '../../providers/fcm/fcm';
 
 
 @IonicPage()
@@ -16,12 +18,25 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class LoginPage {
 	credentials = {} as usercreds;
 	
-  constructor(public navCtrl: NavController,public usepro: UserProvider,public tst : ToastController, public ldCtrl: LoadingController, public navParams: NavParams, public authservice: AuthProvider,public splashScreen: SplashScreen) {
+  constructor(public navCtrl: NavController,public fcm: FcmProvider,public usepro: UserProvider,public tst : ToastController, public ldCtrl: LoadingController, public navParams: NavParams, public authservice: AuthProvider,public splashScreen: SplashScreen) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
 	this.splashScreen.hide();
+	 this.fcm.getToken();
+		this.fcm.listenToNotifications().pipe(
+			tap(msg => {
+				const toast = this.tst.create({
+					message: msg.body,
+					duration: 3000
+				});
+				toast.present();
+			})
+			
+		).subscribe()
+	
+	
   }
 	
 	signin(){

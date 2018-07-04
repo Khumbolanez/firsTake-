@@ -192,7 +192,7 @@ export class ViewprofilePage {
 			console.log("index of req sender is: " + index2);
 			if(index2 > -1){
 				this.zone.run(() => {
-				this.buttondisplay = "Date request sent";
+				this.buttondisplay = "Pending request...";
 				this.buttonwork = false;
 				})
 			}
@@ -332,6 +332,32 @@ getbiodetail(){
 		  console.log('array skr: ' + this.bio ); 
 	  })
 	  console.log('array ayy: ' + this.bio ); 
+  }
+  
+  surerequest(recipient){
+	  
+  let alerte = this.alrt.create({
+    title: 'Are you sure you want to request this date?',
+    
+    buttons: [
+      {
+        text: 'No',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Yes',
+        handler: data => {
+          //this.pagenote = data.note;
+			this.sendreq(recipient);
+          
+        }
+      }
+    ]
+  });
+  alerte.present();
   }
   
    sendreq(recipient){

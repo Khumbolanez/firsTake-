@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "982814502137",
+    "firebase_url": "https://firstake-d7c0e.firebaseio.com",
+    "project_id": "firstake-d7c0e",
+    "storage_bucket": "firstake-d7c0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982814502137:android:979ccc69b48d5e7f",
+        "android_client_info": {
+          "package_name": "io.ionic.firsTake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982814502137-vvm08e7maq3h2ql59urjq6sf3nlrdvt5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKwy1Rq2591BPcpC9GMkl_UucK4kezTEQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

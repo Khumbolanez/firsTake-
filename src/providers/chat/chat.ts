@@ -7,6 +7,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class ChatProvider {
 	firedatechats = firebase.database().ref('/datechats');
+	firenotify = firebase.database().ref('/notifications');
+
 	date: any;
 	elevent;
 	datemessages = [];
@@ -46,16 +48,25 @@ export class ChatProvider {
 				message: msg,
 				timestamp: firebase.database.ServerValue.TIMESTAMP,
 				timesent: time,
-				read: false
+				
 			}).then(() => {
 				this.firedatechats.child(this.date.uid).child(firebase.auth().currentUser.uid).push({
 					sentby: firebase.auth().currentUser.uid,
 					message: msg,
 					timestamp: firebase.database.ServerValue.TIMESTAMP,
 					timesent: time,
-					read: false
+				
 				}).then(() => {
-					resolve(true);
+					
+					this.firenotify.child('notify').push({
+						devtoken: this.date.devtoken,
+						message: msg,
+						sender: firebase.auth().currentUser.displayName,
+						type: 'message'
+					}).then(() => {
+						resolve(true);
+					})
+					
 				})
 			})
 		})

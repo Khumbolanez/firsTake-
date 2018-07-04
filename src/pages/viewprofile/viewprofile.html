@@ -3,7 +3,7 @@
 
 <ion-header>
   <ion-navbar >
-        <h1 style= "color: #fff; text-align: center;"> My profile</h1>
+        <h1 style= "color: #fff; text-align: center;"> {{displayName}}</h1>
   </ion-navbar>
   
 </ion-header>
@@ -16,7 +16,6 @@
 	<div class ="profile-image" [ngStyle] ="{'background-image': 'url(' + bckavatar + ')'}">
      		<img src="{{avatar}}" (click) = "editimage()" >
 		
-			<h4 style ="color: #f00;">{{displayName}}</h4>
 			</div>
 
 	
@@ -33,7 +32,7 @@
 					<ion-icon color ="white" name="images"> Gallery</ion-icon>
 					  
 					</ion-segment-button>
-					<ion-segment-button (click)="sendreq(user)">
+					<ion-segment-button (click)="surerequest(user)">
 					<ion-icon color="hcolor" name="rose"></ion-icon> {{buttondisplay}} 
 					  
 					</ion-segment-button>

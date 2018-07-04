@@ -49,6 +49,8 @@ export class EditpicsPage {
 		   toaster.setMessage('Profile image updated!');
 		  toaster.present();
 		 
+	  }).catch((err) => {
+		  loader.dismiss();
 	  })
   }
   
@@ -72,6 +74,8 @@ export class EditpicsPage {
 		   toaster.setMessage('Background image updated!');
 		  toaster.present();
 		 
+	  }).catch((err) => {
+		  loader.dismiss();
 	  })
   }
   chooseimage2(){
@@ -93,6 +97,8 @@ export class EditpicsPage {
 		   toaster.setMessage('Gallery photo 1 updated!');
 		  toaster.present();
 		 
+	  }).catch((err) => {
+		  loader.dismiss();
 	  })
   }
   
@@ -115,6 +121,8 @@ export class EditpicsPage {
 		   toaster.setMessage('Gallery photo 2 updated');
 		  toaster.present();
 		 
+	  }).catch((err) => {
+		  loader.dismiss();
 	  })
   }
   

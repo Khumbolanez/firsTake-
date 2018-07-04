@@ -101,6 +101,60 @@ export class AboutPage {
 		})
 	}
 	
+	sureaccept(item){
+		 
+	  
+  let alerte = this.alrt.create({
+    title: 'Are you sure you want to accept this date request?',
+    
+    buttons: [
+      {
+        text: 'No',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Yes',
+        handler: data => {
+          //this.pagenote = data.note;
+			this.accept(item);
+          
+        }
+      }
+    ]
+  });
+  alerte.present();
+	}
+	
+	suredelete(item){
+		 
+	  
+  let alerte = this.alrt.create({
+    title: 'Are you sure you want to reject this date request?',
+    
+    buttons: [
+      {
+        text: 'No',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Yes',
+        handler: data => {
+          //this.pagenote = data.note;
+			this.ignore(item);
+          
+        }
+      }
+    ]
+  });
+  alerte.present();
+	}
+	
 	ignore(item){
 			let alerter = this.alrt.create({
 				title: 'Date declined',
@@ -133,5 +187,7 @@ export class AboutPage {
 		this.chatserv.initializedate(person);
 		this.navCtrl.push(ChattingPage)
 	}
+	
+	
 
 }

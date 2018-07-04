@@ -1,5 +1,5 @@
 import { Component,NgZone } from '@angular/core';
-import { NavController,Events } from 'ionic-angular';
+import { NavController,Events,ToastController } from 'ionic-angular';
 import { RequestsProvider } from '../../providers/requests/requests';
 import { UserProvider } from '../../providers/user/user';
 import { ChatProvider } from '../../providers/chat/chat';
@@ -8,6 +8,9 @@ import { VieweventPage } from '../../pages/viewevent/viewevent';
 import { ProfilerPage } from '../../pages/profiler/profiler';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
+import { FcmProvider } from '../../providers/fcm/fcm';
+import { tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'page-home',
@@ -27,7 +30,7 @@ export class HomePage {
   monthsleft: number;
   daysleft: number;
 	filteredevents = [];
-  constructor(public navCtrl: NavController,public chatserv: ChatProvider,public afireauth: AngularFireAuth,public userservice: UserProvider,public zone: NgZone,public events: Events,public reqservice: RequestsProvider) {
+  constructor(public navCtrl: NavController,public tst: ToastController,public fcm: FcmProvider,public chatserv: ChatProvider,public afireauth: AngularFireAuth,public userservice: UserProvider,public zone: NgZone,public events: Events,public reqservice: RequestsProvider) {
 	
 	this.userservice.getallevents().then((res: any) => {
 		console.log("err las");
@@ -89,6 +92,17 @@ export class HomePage {
 	this.user = this.afireauth.auth.currentUser.uid;
 	this.userservice.usermenu();
 	this.reqservice.getmyrequests();
+	  this.fcm.getToken();
+		this.fcm.listenToNotifications().pipe(
+			tap(msg => {
+				const toast = this.tst.create({
+					message: msg.body,
+					duration: 3000
+				});
+				toast.present();
+			})
+			
+		).subscribe()
 	
 	
   }

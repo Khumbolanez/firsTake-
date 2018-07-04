@@ -32,8 +32,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
-
+import { Firebase } from '@ionic-native/firebase';
 import{ AngularFireDatabaseModule } from 'angularfire2/database';
+import{ AngularFirestoreModule } from 'angularfire2/firestore';
+
 import{ AngularFireAuth } from 'angularfire2/auth';
 import{ AngularFireModule } from 'angularfire2';
 import { AuthProvider } from '../providers/auth/auth';
@@ -42,6 +44,7 @@ import { ImghandlerProvider } from '../providers/imghandler/imghandler';
 import { RequestsProvider } from '../providers/requests/requests';
 import { EventcommentsProvider } from '../providers/eventcomments/eventcomments';
 import { ChatProvider } from '../providers/chat/chat';
+import { FcmProvider } from '../providers/fcm/fcm';
 //
 
 var config = {
@@ -85,7 +88,9 @@ var config = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
 	AngularFireModule.initializeApp(config),
-	AngularFireDatabaseModule
+	AngularFireDatabaseModule,
+		AngularFirestoreModule.enablePersistence()
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -127,7 +132,9 @@ var config = {
     RequestsProvider,
 	AngularFireDatabaseModule,
     EventcommentsProvider,
-    ChatProvider
+    ChatProvider,
+    FcmProvider,
+	Firebase
   ]
 })
 export class AppModule {}
